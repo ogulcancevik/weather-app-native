@@ -1,13 +1,17 @@
-import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, Text } from "react-native";
+import { SafeAreaView, ImageBackground } from "react-native";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+import Weather from "./components/Weather";
 
 export default function App() {
+  const queryClient = new QueryClient();
   return (
-    <SafeAreaView>
-      <Text className="text-red-500">
-        O2pen up App.tsx to start working on your app!
-      </Text>
-      <StatusBar style="auto" />
-    </SafeAreaView>
+    <QueryClientProvider client={queryClient}>
+      <ImageBackground className="flex-1" source={require("./assets/bg.jpeg")}>
+        <SafeAreaView className="flex-1">
+          <Weather />
+        </SafeAreaView>
+      </ImageBackground>
+    </QueryClientProvider>
   );
 }
