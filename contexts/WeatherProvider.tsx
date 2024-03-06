@@ -1,5 +1,6 @@
 import MainLayout from "@components/MainLayout";
-import { createContext, useState } from "react";
+import { useAssets } from "expo-asset";
+import { createContext, useMemo, useState } from "react";
 import { useQuery } from "react-query";
 import { useDebounceCallback } from "usehooks-ts";
 
@@ -37,6 +38,8 @@ export default function WeatherProvider({
 }: {
   children: React.ReactNode;
 }) {
+  const [assets] = useAssets([require("@assets/bg.jpeg")]);
+  const isAssetLoaded = useMemo(() => assets?.length, [assets]);
   const [query, setQuery] = useState("");
   const [isSearch, setIsSearch] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState<AutoCompleteResponse>(
@@ -82,7 +85,7 @@ export default function WeatherProvider({
 
   return (
     <WeatherContext.Provider value={values}>
-      <MainLayout>{children}</MainLayout>
+      {isAssetLoaded && <MainLayout assets={assets}>{children}</MainLayout>}
     </WeatherContext.Provider>
   );
 }
