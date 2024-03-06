@@ -1,17 +1,17 @@
+import PartlyCloudySVG from "@assets/partly-cloudy.svg";
+import RainySVG from "@assets/rainy.svg";
+import SnowySVG from "@assets/snowy.svg";
+import SunnySVG from "@assets/sunny.svg";
+import ThunderRainSVG from "@assets/thunder-rain.svg";
 import React, { useMemo } from "react";
 
-import PartlyCloudySVG from "../assets/partly-cloudy.svg";
-import RainySVG from "../assets/rainy.svg";
-import SnowySVG from "../assets/snowy.svg";
-import SunnySVG from "../assets/sunny.svg";
-import ThunderRainSVG from "../assets/thunder-rain.svg";
-import WEATHER_CONDITIONS from "../constants/weatherConditions";
+import WEATHER_CONDITIONS from "../../constants/weatherConditions";
 
 interface WeatherIconProps {
   condition: string | undefined;
 }
 
-export default function WeatherIcon({ condition }: WeatherIconProps) {
+export default function Icon({ condition }: WeatherIconProps) {
   const iconName = useMemo(() => {
     const iconName = WEATHER_CONDITIONS.find(
       (weather) => weather.day === condition || weather.night === condition,

@@ -1,17 +1,18 @@
-import { SafeAreaView, ImageBackground } from "react-native";
+import Search from "@components/Search";
+import Weather from "@components/Weather";
+import WeatherProvider from "@contexts/WeatherProvider";
 import { QueryClient, QueryClientProvider } from "react-query";
-
-import Weather from "./components/Weather";
 
 export default function App() {
   const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
-      <ImageBackground className="flex-1" source={require("./assets/bg.jpeg")}>
-        <SafeAreaView className="flex-1">
-          <Weather />
-        </SafeAreaView>
-      </ImageBackground>
+      <WeatherProvider>
+        <Search.Bar />
+        <Weather.Data />
+        <Weather.Stats />
+        <Search.Overlay />
+      </WeatherProvider>
     </QueryClientProvider>
   );
 }
