@@ -1,7 +1,5 @@
-// import Error from "@components/Error";
 import MainLayout from "@components/MainLayout";
 import { createContext, useState } from "react";
-// import { ActivityIndicator } from "react-native";
 import { useQuery } from "react-query";
 import { useDebounceCallback } from "usehooks-ts";
 
@@ -16,7 +14,12 @@ interface WeatherContextProps {
   setDebouncedQuery: (query: string) => void;
   isSearch: boolean;
   setIsSearch: (isSearch: boolean) => void;
-  weatherData: { data: CurrentWeatherResponse; isLoading: boolean };
+  weatherData: {
+    data: CurrentWeatherResponse;
+    isLoading: boolean;
+    isError: boolean;
+  };
+  selectedCountry: AutoCompleteResponse;
   setSelectedCountry: (country: AutoCompleteResponse) => void;
   autoCompleteData: {
     data: AutoCompleteResponse[];
@@ -41,7 +44,11 @@ export default function WeatherProvider({
   );
   const setDebouncedQuery = useDebounceCallback(setQuery, 500);
 
-  const { data: weatherData, isLoading: weatherIsLoading } = useQuery({
+  const {
+    data: weatherData,
+    isLoading: weatherIsLoading,
+    isError: weatherIsError,
+  } = useQuery({
     queryKey: ["weather", selectedCountry.name],
     queryFn: () => fetchCurrentWeather(selectedCountry.name),
   });
@@ -59,7 +66,12 @@ export default function WeatherProvider({
     setDebouncedQuery,
     isSearch,
     setIsSearch,
-    weatherData: { data: weatherData, isLoading: weatherIsLoading },
+    weatherData: {
+      data: weatherData,
+      isLoading: weatherIsLoading,
+      isError: weatherIsError,
+    },
+    selectedCountry,
     setSelectedCountry,
     autoCompleteData: {
       data: autoCompleteData,
@@ -68,22 +80,9 @@ export default function WeatherProvider({
     },
   } as WeatherContextProps;
 
-  // const RenderApp = () =>
-  //   useMemo(() => {
-  //     if (!isFetching && !isError) {
-  //       return children;
-  //     }
-  //     if (isFetching && isError) {
-  //       return <Error />;
-  //     }
-  //     return <ActivityIndicator size="large" color="white" />;
-  //   }, [isFetching, isError, children]);
   return (
     <WeatherContext.Provider value={values}>
-      <MainLayout>
-        {/* <RenderApp /> */}
-        {children}
-      </MainLayout>
+      <MainLayout>{children}</MainLayout>
     </WeatherContext.Provider>
   );
 }

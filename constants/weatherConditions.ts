@@ -10,6 +10,11 @@ const WEATHER_CONDITIONS = Object.freeze([
     svg: "partly-cloudy",
   },
   {
+    day: "Partly Cloudy",
+    night: "Partly Cloudy",
+    svg: "partly-cloudy",
+  },
+  {
     day: "Cloudy",
     night: "Cloudy",
     svg: "partly-cloudy",
@@ -27,6 +32,11 @@ const WEATHER_CONDITIONS = Object.freeze([
   {
     day: "Patchy rain possible",
     night: "Patchy rain possible",
+    svg: "rainy",
+  },
+  {
+    day: "Patchy rain nearby",
+    night: "Patchy rain nearby",
     svg: "rainy",
   },
   {

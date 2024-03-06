@@ -11,6 +11,7 @@ export default function App() {
         <Search.Bar />
         <Weather.Data />
         <Weather.Stats />
+        <Weather.Forecast />
         <Search.Overlay />
       </WeatherProvider>
     </QueryClientProvider>

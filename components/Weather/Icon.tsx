@@ -9,12 +9,20 @@ import WEATHER_CONDITIONS from "../../constants/weatherConditions";
 
 interface WeatherIconProps {
   condition: string | undefined;
+  width?: number;
+  height?: number;
 }
 
-export default function Icon({ condition }: WeatherIconProps) {
+export default function Icon({
+  condition,
+  width = 200,
+  height = 200,
+}: WeatherIconProps) {
   const iconName = useMemo(() => {
+    console.log(condition);
     const iconName = WEATHER_CONDITIONS.find(
-      (weather) => weather.day === condition || weather.night === condition,
+      (weather) =>
+        weather.day === condition || weather.night === condition?.trim(),
     )?.svg;
     return iconName;
   }, [condition]);
@@ -35,5 +43,5 @@ export default function Icon({ condition }: WeatherIconProps) {
     }
   };
   const IconComponent = useMemo(() => getIconComponent(iconName), [iconName]);
-  return IconComponent ? <IconComponent width={200} height={200} /> : null;
+  return IconComponent ? <IconComponent width={width} height={height} /> : null;
 }

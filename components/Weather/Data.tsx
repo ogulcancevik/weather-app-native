@@ -6,7 +6,7 @@ import Icon from "./Icon";
 
 export default function Data() {
   const { weatherData } = useContext(WeatherContext);
-  if (!weatherData.isLoading)
+  if (!weatherData.isLoading && !weatherData.isError)
     return (
       <View className="mt-12 items-center">
         <Text className="text-white text-2xl text-center font-bold mb-5">

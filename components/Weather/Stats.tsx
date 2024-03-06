@@ -4,7 +4,7 @@ import { View, Text } from "react-native";
 
 import { WEATHER_ICONS } from "../../constants/weatherStats";
 import { WeatherContext } from "../../contexts/WeatherProvider";
-import dateToHour from "../../helpers/dateToHour";
+import dateToHour from "../../helpers/date/dateToHour";
 
 export default function Stats() {
   const { weatherData } = useContext(WeatherContext);
@@ -25,7 +25,7 @@ export default function Stats() {
     [weatherData.data, weatherData.isLoading],
   );
 
-  if (!weatherData.isLoading)
+  if (!weatherData.isLoading && !weatherData.isError)
     return (
       <View className="mt-6 flex-row justify-between px-16">
         {WEATHER_ICONS.map((stat, index) => (
