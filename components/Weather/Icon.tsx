@@ -19,7 +19,6 @@ export default function Icon({
   height = 200,
 }: WeatherIconProps) {
   const iconName = useMemo(() => {
-    console.log(condition);
     const iconName = WEATHER_CONDITIONS.find(
       (weather) =>
         weather.day === condition || weather.night === condition?.trim(),
