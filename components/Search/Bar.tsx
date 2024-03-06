@@ -1,7 +1,6 @@
+import { WeatherContext } from "@contexts/WeatherProvider";
 import React, { useContext } from "react";
 import { Text, TouchableOpacity } from "react-native";
-
-import { WeatherContext } from "../../contexts/WeatherProvider";
 
 export default function Bar() {
   const { isSearch, setIsSearch } = useContext(WeatherContext);

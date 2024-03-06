@@ -1,3 +1,5 @@
+import { WeatherContext } from "@contexts/WeatherProvider";
+import { AutoCompleteResponse } from "@types/AutoComplete";
 import React, { useContext, useEffect, useState } from "react";
 import {
   Pressable,
@@ -8,9 +10,6 @@ import {
   View,
 } from "react-native";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
-
-import { WeatherContext } from "../../contexts/WeatherProvider";
-import { AutoCompleteResponse } from "../../types/AutoComplete";
 
 export default function Overlay() {
   const {

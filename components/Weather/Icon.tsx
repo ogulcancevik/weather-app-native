@@ -3,9 +3,8 @@ import RainySVG from "@assets/rainy.svg";
 import SnowySVG from "@assets/snowy.svg";
 import SunnySVG from "@assets/sunny.svg";
 import ThunderRainSVG from "@assets/thunder-rain.svg";
+import WEATHER_CONDITIONS from "@constants/weatherConditions";
 import React, { useMemo } from "react";
-
-import WEATHER_CONDITIONS from "../../constants/weatherConditions";
 
 interface WeatherIconProps {
   condition: string | undefined;

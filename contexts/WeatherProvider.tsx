@@ -1,13 +1,12 @@
 import MainLayout from "@components/MainLayout";
+import { fetchAutoComplete } from "@services/fetchAutoComplete";
+import { fetchCurrentWeather } from "@services/fetchCurrentWeather";
+import { AutoCompleteResponse } from "@types/AutoComplete";
+import { CurrentWeatherResponse } from "@types/CurrentWeather";
 import { useAssets } from "expo-asset";
 import { createContext, useMemo, useState } from "react";
 import { useQuery } from "react-query";
 import { useDebounceCallback } from "usehooks-ts";
-
-import { fetchAutoComplete } from "../services/fetchAutoComplete";
-import { fetchCurrentWeather } from "../services/fetchCurrentWeather";
-import { AutoCompleteResponse } from "../types/AutoComplete";
-import { CurrentWeatherResponse } from "../types/CurrentWeather";
 
 interface WeatherContextProps {
   query: string;

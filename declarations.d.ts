@@ -5,3 +5,7 @@ declare module "*.svg" {
   const content: React.FC<SvgProps>;
   export default content;
 }
+declare module "@types/*" {
+  const content: any;
+  export default content;
+}

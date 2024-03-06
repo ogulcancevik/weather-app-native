@@ -1,10 +1,9 @@
+import { WEATHER_ICONS } from "@constants/weatherStats";
+import { WeatherContext } from "@contexts/WeatherProvider";
 import { Feather } from "@expo/vector-icons";
+import dateToHour from "@helpers/date/dateToHour";
 import React, { useCallback, useContext } from "react";
 import { View, Text } from "react-native";
-
-import { WEATHER_ICONS } from "../../constants/weatherStats";
-import { WeatherContext } from "../../contexts/WeatherProvider";
-import dateToHour from "../../helpers/date/dateToHour";
 
 export default function Stats() {
   const { weatherData } = useContext(WeatherContext);

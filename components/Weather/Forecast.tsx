@@ -1,12 +1,12 @@
 import { WeatherContext } from "@contexts/WeatherProvider";
 import { Feather } from "@expo/vector-icons";
+import dateToDay from "@helpers/date/dateToDay";
+import { fetchForecast } from "@services/fetchForecast";
 import { useContext } from "react";
 import { View, Text, FlatList } from "react-native";
 import { useQuery } from "react-query";
 
 import Icon from "./Icon";
-import dateToDay from "../../helpers/date/dateToDay";
-import { fetchForecast } from "../../services/fetchForecast";
 export default function Forecast() {
   const { selectedCountry } = useContext(WeatherContext);
   const { data, isError, isLoading } = useQuery({

@@ -1,5 +1,6 @@
+import { AutoCompleteResponse } from "@types/AutoComplete";
+
 import api from "./serviceHelper";
-import { AutoCompleteResponse } from "../types/AutoComplete";
 
 export const fetchAutoComplete = async (q: string) => {
   if (!q) return [];
